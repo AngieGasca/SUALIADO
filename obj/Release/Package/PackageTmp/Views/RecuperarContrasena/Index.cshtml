@@ -1,0 +1,95 @@
+﻿@model Sualiado.Models.Request.RecuperarContraModel
+@{
+    ViewBag.Title = "Recuperar Contraseña";
+}
+
+
+
+
+<div class="float-md-none">
+
+    <div class="panel panel-success" style="border-color: transparent;background-color:azure;">
+
+        <div class="panel-heading">
+            <h3 class="panel-title" style="margin-left:40px;">Recuperar contraseña</h3>
+
+        </div>
+
+
+        <div style="background-color:azure;margin-left:90px;border-color: transparent;">
+
+
+
+            @using (Html.BeginForm("Recuperar", "RecuperarContrasena", FormMethod.Post))
+
+            {
+
+                <br />
+
+
+                <div class="row">
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+                            <label>Correo</label>
+
+
+                            <input type="text" id="Correo" name="Correo" class="quantity form-control" />
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-1">
+                        <br />
+                        <br />
+
+                        <label class="text-danger">*</label>
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <div class="form-group">
+
+                            <br />
+                            <button type="submit" class="btn btn-success my-2 my-sm-0">Enviar</button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+                <div class="row">
+
+
+
+                    <div class="col-md-2">
+                        <br />
+                        <br />
+
+                        <label id="Mensaje">@Model.Mensaje</label>
+                    </div>
+
+                    
+                </div>
+
+
+
+            }
+
+            <!-- contenido arriba-->
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Sualiado.Models.proveedor>
+@{
+    ViewBag.Title = "Proveedor";
+}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Proveedores</h3>
+            <span class="pull-right clickable">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+
+
+            </span>
+        </div>
+        <div class="float-lg-right px-Per">
+            <br />
+            @Html.ActionLink("_", "Add", null, new { @class = "btn-outline-agregarPer" })
+        </div>
+
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Código Persona</th>
+                    <th scope="col">Locación</th>
+                    <th scope="col">Enlace</th>
+                    <th scope="col">Activo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@item.Cod_Prove</th>
+                        <td>@item.Cod_Pers_Fk</td>
+                        <td>@item.Locacion</td>
+                        <td>@item.Enlace</td>
+                        <td>@item.Activo</td>
+                        <td>@Html.ActionLink("_", "Edit", new { cod_prove = item.Cod_Prove }, new { @class = "btn-outline-editarPer" })</td>
+                        <td>@Html.ActionLink("_", "Delete", new { cod_prove = item.Cod_Prove }, new { @class = "btn-outline-eliminarPer" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        </div>

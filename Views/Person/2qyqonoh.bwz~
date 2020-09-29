@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Sualiado.Models.persona>
+@{
+    ViewBag.Title = "Persona";
+}
+<div>
+    @Html.ActionLink("Agregar", "Add", new { @class = "btn btn-outline-primary" })
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Tipo Iden</th>
+            <th scope="col">Numero de Iden</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Cod_Pers</th>
+                <td>@item.Nom_Pers</td>
+                <td>@item.Ape_Pers</td>
+                <td>@item.Tipo_Iden</td>
+                <td>@item.Nro_Iden</td>
+                <td>@item.Fec_Nac</td>
+                <td>@item.Correo</td>
+                <td>@item.Telefono</td>
+                <td>@Html.ActionLink("Editar", "Edit", new { cod = item.Cod_Pers }, new { @class = "btn btn-warning" })</td>
+                <td>@Html.ActionLink("Eliminar", "Delete", new { cod = item.Cod_Pers }, new { @class = "btn btn-outline-danger" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@foreach (var item in Model)
+{
+<div class="card" style="width: 28rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@item.Nom_Pers</h5>
+        <p class="card-text">@item.Fec_Nac</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<br />
+}

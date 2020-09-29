@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Sualiado.Models.producto>
+@{
+    ViewBag.Title = "Producto";
+
+    
+}
+
+
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Producto</h3>
+            <span class="pull-right clickable">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+
+
+            </span>
+        </div>
+        <!-- contenido abajo-->
+      
+        <div class="float-left px-Per" style="margin-left:10px;">
+            <br />
+            <label style="color:red;">   @ViewBag.Mensaje </label> 
+        </div>
+        <div class="float-right px-Per">
+            <br />
+            @Html.ActionLink("_", "Add", null, new { @class = "btn-outline-agregarPer" })
+        </div>
+        <form>
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">N°</th>
+                        <th scope="col">Cod Subcategoría</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Existencia</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Activo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.Cod_Produc</th>
+                            <td>@item.Cod_SubCategoria</td>
+                            <td>@item.Nombre_Produc</td>
+                            <td>@item.Existencias</td>
+                            <td>@item.Precio_Venta</td>
+                            <td>@item.Activo</td>
+                            <td>@Html.ActionLink("_", "Edit", new { cod_produc = item.Cod_Produc }, new { @class = "btn-outline-editarPer" })</td>
+                            <td>@Html.ActionLink("_", "Delete", new { cod_produc = item.Cod_Produc }, new { @class = "btn-outline-eliminarPer" })</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+

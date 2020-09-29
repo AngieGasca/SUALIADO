@@ -1,0 +1,83 @@
+﻿using Sualiado.Models;
+using System;
+using System.Collections.Generic;
+using System.Drawing.Printing;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Sualiado.Models.Request;
+
+namespace Sualiado.Controllers
+{
+    public class ProductController : Controller
+    {
+        private SualiadoEntities db = new SualiadoEntities();
+        // GET: Product
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View(db.producto.ToList());
+        }
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Add(ProductRequest model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (db)
+                {
+                    db.SP_Pro_Agregar(model.Cod_Subca,model.Nombre_Produc,model.Existencia,model.Precio_Vta, model.Tope_Min, model.Tope_Max,model.Activo);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(model);
+        }
+        [HttpGet]
+        public ActionResult Edit(int cod_produc)
+        {
+            ProductRequest model = new ProductRequest();
+            using (db)
+            {
+                var pro = db.producto.Find(cod_produc);
+                model.Cod_Subca = pro.Cod_Scat_Fk;
+                model.Nombre_Produc = pro.Nombre_Produc;
+                model.Existencia = pro.Existencia;
+                model.Precio_Vta = pro.Precio_Vta;
+                model.Tope_Min = (int)pro.Tope_Min;
+                model.Tope_Max =(int) pro.Tope_Max;
+                model.Activo= pro.Activo;
+            }
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Edit(ProductRequest model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (db)
+                {
+                    db.SP_Pro_Editar(model.Cod_Subca, model.Nombre_Produc, model.Existencia, model.Precio_Vta, model.Tope_Min, model.Tope_Max, model.Activo, model.Cod_Produc);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(model);
+        }
+        [HttpGet]
+        public ActionResult Delete(int cod_produc)
+        {
+            using (db)
+            {
+                db.SP_Pro_Eliminar(cod_produc);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        
+    }
+}

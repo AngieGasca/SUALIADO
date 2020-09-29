@@ -1,0 +1,125 @@
+﻿
+@model Sualiado.Models.Request.RecuperarContraModel
+@{
+    ViewBag.Title = "Restablecer Contraseña";
+}
+
+
+
+
+<div class="float-md-none">
+
+    <div class="panel panel-success" style="border-color: transparent;background-color:azure;">
+
+        <div class="panel-heading">
+            <h3 class="panel-title" style="margin-left:40px;">Restablecer Contraseña</h3>
+
+        </div>
+
+
+        <div style="background-color:azure;margin-left:90px;border-color: transparent;">
+
+
+
+            @using (Html.BeginForm("ActualizarContrasena", "RecuperarContrasena", FormMethod.Post))
+
+            {
+
+                <br />
+
+
+                <div class="row">
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+                            <label>Correo</label>
+
+                            <label >@Model.Correo</label>
+                           
+
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+                    <div class="col-md-3">
+
+                        <div class="form-group">
+
+                            <br />
+                            <button type="submit" class="btn btn-success my-2 my-sm-0">Enviar</button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+                <div class="row">
+
+                    <div class="col-md-2">
+
+
+
+
+                        <div class="form-group">
+
+                            <label>Nueva Contraseña</label>
+
+
+                            <input type="text" id="contrasena" name="contrasena" class="quantity form-control" />
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2">
+                        <br />
+                        <br />
+
+                        <label class="text-danger">*</label>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row">
+
+
+
+                    <div class="col-md-2">
+                        <br />
+                        <br />
+
+                        <label id="Mensaje">@Model.Mensaje</label>
+                    </div>
+
+                    <input type="hidden" id="Correo" name="Correo" value="@Model.Correo" class="quantity form-control" />
+                </div>
+
+
+            }
+
+            <!-- contenido arriba-->
+        </div>
+
+            </div>
+</div>

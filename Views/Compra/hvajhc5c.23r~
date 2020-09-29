@@ -1,0 +1,152 @@
+﻿@model Sualiado.Models.CompraModel
+
+
+
+@{
+
+
+
+    ViewBag.Title = "COMPRA";
+
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+
+<h2>Compras</h2>
+
+
+@Scripts.Render("~/bundles/ComprarJS")
+
+
+
+
+@using (Html.BeginForm("Index", "Compra", FormMethod.Post, new { @id = "formIdDocumentos" }))
+
+{
+
+
+
+    <hr />
+
+
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="form-group">
+
+                <label>Categoria</label>
+
+                @Html.DropDownListFor(model => model.categoria, Model.listaCategorias, "-- Seleccionar --", htmlAttributes: new { @class = "form-control", @onchange = "CargarSubCategoria()" })
+
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-1">
+            <br />
+            <br />
+
+            <label class="text-danger">*</label>
+        </div>
+
+
+
+        <div class="col-md-3">
+
+            <div class="form-group">
+
+                <label>Subcategoria</label>
+                @Html.DropDownListFor(model => model.subcategoria, Model.listaSubCategorias, "-- Seleccionar --", htmlAttributes: new { @class = "form-control", @onchange = "CargarProductos()" })
+
+
+                @Html.ValidationMessageFor(model => model.listaSubCategorias, "", new { @class = "text-danger" })
+
+
+
+            </div>
+
+        </div>
+        <div class="col-md-1">
+            <br />
+            <br />
+
+            <label class="text-danger">*</label>
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="form-group">
+
+                <label>Producto</label>
+                @Html.DropDownListFor(model => model.producto, Model.listaProducto, "-- Seleccionar --", htmlAttributes: new { @class = "form-control" })
+
+
+                @Html.ValidationMessageFor(model => model.listaProducto, "", new { @class = "text-danger" })
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="form-group">
+
+                <label>Cantidad</label>
+
+
+
+                <input type="number" id="txtExistencias" name="txtExistencias" min="0" max="999" class="quantity form-control" />
+
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="form-group">
+
+                <label>Valor Total</label>
+
+
+                <input type="number" id="txtValorTotal" name="txtValorTotal" min="0" max="99999" class="quantity form-control" />
+
+
+            </div>
+
+        </div>
+        <div class="col-md-3">
+
+            <div class="form-group">
+
+               <br />
+                <button type="button" class="btn btn-secondary my-2 my-sm-0" onclick="GuardarCompra()">Comprar</button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+   }
+
+

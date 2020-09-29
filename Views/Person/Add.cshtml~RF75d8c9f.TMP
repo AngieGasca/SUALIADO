@@ -1,0 +1,49 @@
+﻿@model Sualiado.Models.Request.PersonRequest
+
+@{
+    ViewBag.Title = "Agregar Persona";
+}
+@using (Html.BeginForm())
+{
+
+    <div class="form-group col-md-5" >
+        @Html.LabelFor(p => p.Nom_Pers)
+        @Html.TextBoxFor(p => p.Nom_Pers, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-md-5">
+        @Html.LabelFor(p => p.Ape_Pers)
+        @Html.TextBoxFor(p => p.Ape_Pers, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-md-5">
+        @Html.LabelFor(p => p.Tipo_Iden)
+        @Html.TextBoxFor(p => p.Tipo_Iden, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-md-5">
+        @Html.LabelFor(p => p.Nro_Iden)
+        @Html.TextBoxFor(p => p.Nro_Iden, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group col-md-5">
+        @Html.LabelFor(p => p.Fec_Nac)
+        @Html.TextBoxFor(p => p.Fec_Nac, new { @class = "form-control", @type = "date" })
+    </div>
+    <div class="form-group col-md-5">
+        @Html.LabelFor(p => p.Correo)
+        @Html.TextBoxFor(p => p.Correo, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-md-5">
+        @Html.LabelFor(p => p.Telefono)
+        @Html.TextBoxFor(p => p.Telefono, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-md-5">
+        @Html.LabelFor(p => p.Contrasena)
+        @Html.TextBoxFor(p => p.Contrasena, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-md-5">
+        @Html.LabelFor(p => p.Tipo_Rol)
+        @Html.EditorFor(p => p.Tipo_Rol, new { @class = "form-control" })
+    </div>
+
+    <input type="submit" value="Agregar" />
+
+}

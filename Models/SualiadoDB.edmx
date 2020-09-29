@@ -1,0 +1,950 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SualiadoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="Cod_Cat" />
+          </Key>
+          <Property Name="Cod_Cat" Type="int" Nullable="false" />
+          <Property Name="Nom_Cat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kardex">
+          <Key>
+            <PropertyRef Name="Consecut" />
+          </Key>
+          <Property Name="Consecut" Type="int" Nullable="false" />
+          <Property Name="Cod_Pers_Fk" Type="int" Nullable="false" />
+          <Property Name="Cod_Mov_Fk" Type="int" Nullable="false" />
+          <Property Name="Cod_Produc_Fk" Type="int" Nullable="false" />
+          <Property Name="Dcto" Type="int" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Costo" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Detalle" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="movimientos">
+          <Key>
+            <PropertyRef Name="Cod_Mov" />
+          </Key>
+          <Property Name="Cod_Mov" Type="int" Nullable="false" />
+          <Property Name="Nom_Mov" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Aumenta" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="Cod_Pers" />
+          </Key>
+          <Property Name="Cod_Pers" Type="int" Nullable="false" />
+          <Property Name="Nom_Pers" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ape_Pers" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipo_Iden" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nro_Iden" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Fec_Nac" Type="date" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tipo_Rol" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="Cod_Produc" />
+          </Key>
+          <Property Name="Cod_Produc" Type="int" Nullable="false" />
+          <Property Name="Nombre_Produc" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="Existencias" Type="int" />
+          <Property Name="Precio_Venta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="Cod_SubCategoria" Type="int" />
+        </EntityType>
+        <EntityType Name="proveedor">
+          <Key>
+            <PropertyRef Name="Cod_Prove" />
+          </Key>
+          <Property Name="Cod_Prove" Type="int" Nullable="false" />
+          <Property Name="Cod_Pers_Fk" Type="int" Nullable="false" />
+          <Property Name="Locacion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Enlace" Type="varchar" MaxLength="100" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="subcategoria">
+          <Key>
+            <PropertyRef Name="Cod_Scat" />
+          </Key>
+          <Property Name="Cod_Scat" Type="int" Nullable="false" />
+          <Property Name="Nom_Sbcat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="Cod_Categoria" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Kardex_Movimiento">
+          <End Role="movimientos" Type="Self.movimientos" Multiplicity="1" />
+          <End Role="kardex" Type="Self.kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movimientos">
+              <PropertyRef Name="Cod_Mov" />
+            </Principal>
+            <Dependent Role="kardex">
+              <PropertyRef Name="Cod_Mov_Fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Kardex_Persona">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="kardex" Type="Self.kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="Cod_Pers" />
+            </Principal>
+            <Dependent Role="kardex">
+              <PropertyRef Name="Cod_Pers_Fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Kardex_Producto">
+          <End Role="producto" Type="Self.producto" Multiplicity="1" />
+          <End Role="kardex" Type="Self.kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producto">
+              <PropertyRef Name="Cod_Produc" />
+            </Principal>
+            <Dependent Role="kardex">
+              <PropertyRef Name="Cod_Produc_Fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_subcategoria">
+          <End Role="subcategoria" Type="Self.subcategoria" Multiplicity="0..1" />
+          <End Role="producto" Type="Self.producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subcategoria">
+              <PropertyRef Name="Cod_Scat" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="Cod_SubCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Proveedor_Persona">
+          <End Role="persona" Type="Self.persona" Multiplicity="1" />
+          <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="Cod_Pers" />
+            </Principal>
+            <Dependent Role="proveedor">
+              <PropertyRef Name="Cod_Pers_Fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subcategoria_categoria">
+          <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+          <End Role="subcategoria" Type="Self.subcategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="Cod_Cat" />
+            </Principal>
+            <Dependent Role="subcategoria">
+              <PropertyRef Name="Cod_Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="EditarContrasena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="correo" Type="nvarchar" Mode="In" />
+          <Parameter Name="contrasena" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="LISTAR_PRODUCTOS_POR_SUBCATEGORIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_SubCategoria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LISTAR_SUBCATEGORIAS_POR_CATEGORIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Categoria" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_CREAR_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Produc" Type="int" Mode="In" />
+          <Parameter Name="Existencias" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Kr_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Pers_Fk" Type="int" Mode="In" />
+          <Parameter Name="Cod_Mov_Fk" Type="int" Mode="In" />
+          <Parameter Name="Cod_Produc_Fk" Type="int" Mode="In" />
+          <Parameter Name="Dcto" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Costo" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="Detalle" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_Kr_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Pers_Fk" Type="int" Mode="In" />
+          <Parameter Name="Cod_Mov_Fk" Type="int" Mode="In" />
+          <Parameter Name="Cod_Produc_Fk" Type="int" Mode="In" />
+          <Parameter Name="Dcto" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Costo" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="Consecut" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Kr_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Consecut" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_LISTAR_CATEGORIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_LISTAR_PROVEEDORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_OBTENER_EXISTENCIAS_POR_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codProducto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Per_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom_Pers" Type="varchar" Mode="In" />
+          <Parameter Name="Ape_Pers" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo_iden" Type="varchar" Mode="In" />
+          <Parameter Name="Nro_Iden" Type="varchar" Mode="In" />
+          <Parameter Name="Fec_Nac" Type="date" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Contrasena" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo_Rol" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Per_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom_Pers" Type="varchar" Mode="In" />
+          <Parameter Name="Ape_Pers" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo_iden" Type="varchar" Mode="In" />
+          <Parameter Name="Nro_Iden" Type="varchar" Mode="In" />
+          <Parameter Name="Fec_Nac" Type="date" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Cod_Pers" Type="int" Mode="In" />
+          <Parameter Name="Contrasena" Type="varchar" Mode="In" />
+          <Parameter Name="Tipo_Rol" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Per_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Pers" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Pro_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Scat" Type="int" Mode="In" />
+          <Parameter Name="Nombre_Produc" Type="varchar" Mode="In" />
+          <Parameter Name="Existencia" Type="int" Mode="In" />
+          <Parameter Name="Precio_Vta" Type="varchar" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_Pro_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Scat" Type="int" Mode="In" />
+          <Parameter Name="Nombre_Produc" Type="varchar" Mode="In" />
+          <Parameter Name="Existencia" Type="int" Mode="In" />
+          <Parameter Name="Precio_Vta" Type="varchar" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+          <Parameter Name="Cod_Product" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Pro_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Product" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Prove_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Pers" Type="int" Mode="In" />
+          <Parameter Name="Locacion" Type="varchar" Mode="In" />
+          <Parameter Name="Enlace" Type="varchar" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_Prove_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Pers" Type="int" Mode="In" />
+          <Parameter Name="Locacion" Type="varchar" Mode="In" />
+          <Parameter Name="Enlace" Type="varchar" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+          <Parameter Name="Cod_Prove" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Prove_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Prove" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_SC_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom_Sbcat" Type="varchar" Mode="In" />
+          <Parameter Name="Cod_Cat_Fk" Type="int" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_SC_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nom_Sbcat" Type="varchar" Mode="In" />
+          <Parameter Name="Cod_Cat_Fk" Type="int" Mode="In" />
+          <Parameter Name="Activo" Type="bit" Mode="In" />
+          <Parameter Name="Cod_Scat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_SC_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_Scat" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_VALIDAR_RELACION_PERSONA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codPersona" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_VALIDAR_RELACION_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codProducto" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="SualiadoModelStoreContainer">
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kardex" EntityType="Self.kardex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="movimientos" EntityType="Self.movimientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="subcategoria" EntityType="Self.subcategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Kardex_Movimiento" Association="Self.FK_Kardex_Movimiento">
+            <End Role="movimientos" EntitySet="movimientos" />
+            <End Role="kardex" EntitySet="kardex" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Kardex_Persona" Association="Self.Fk_Kardex_Persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="kardex" EntitySet="kardex" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Kardex_Producto" Association="Self.Fk_Kardex_Producto">
+            <End Role="producto" EntitySet="producto" />
+            <End Role="kardex" EntitySet="kardex" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_subcategoria" Association="Self.FK_producto_subcategoria">
+            <End Role="subcategoria" EntitySet="subcategoria" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Proveedor_Persona" Association="Self.Fk_Proveedor_Persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="proveedor" EntitySet="proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subcategoria_categoria" Association="Self.FK_subcategoria_categoria">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="subcategoria" EntitySet="subcategoria" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SualiadoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SualiadoEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SualiadoModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SualiadoModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Kr_Agregar">
+            <Parameter Name="Cod_Pers_Fk" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Mov_Fk" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Produc_Fk" Mode="In" Type="Int32" />
+            <Parameter Name="Dcto" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Costo" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Detalle" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Kr_Editar">
+            <Parameter Name="Cod_Pers_Fk" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Mov_Fk" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Produc_Fk" Mode="In" Type="Int32" />
+            <Parameter Name="Dcto" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Costo" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="Consecut" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Kr_Eliminar">
+          <Parameter Name="Consecut" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Per_Agregar">
+            <Parameter Name="Nom_Pers" Mode="In" Type="String" />
+            <Parameter Name="Ape_Pers" Mode="In" Type="String" />
+            <Parameter Name="Tipo_iden" Mode="In" Type="String" />
+            <Parameter Name="Nro_Iden" Mode="In" Type="String" />
+            <Parameter Name="Fec_Nac" Mode="In" Type="DateTime" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Contrasena" Mode="In" Type="String" />
+            <Parameter Name="Tipo_Rol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Per_Editar">
+            <Parameter Name="Nom_Pers" Mode="In" Type="String" />
+            <Parameter Name="Ape_Pers" Mode="In" Type="String" />
+            <Parameter Name="Tipo_iden" Mode="In" Type="String" />
+            <Parameter Name="Nro_Iden" Mode="In" Type="String" />
+            <Parameter Name="Fec_Nac" Mode="In" Type="DateTime" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Cod_Pers" Mode="In" Type="Int32" />
+            <Parameter Name="Contrasena" Mode="In" Type="String" />
+            <Parameter Name="Tipo_Rol" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Per_Eliminar">
+          <Parameter Name="Cod_Pers" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Pro_Agregar">
+            <Parameter Name="Cod_Scat" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre_Produc" Mode="In" Type="String" />
+            <Parameter Name="Existencia" Mode="In" Type="Int32" />
+            <Parameter Name="Precio_Vta" Mode="In" Type="String" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Pro_Editar">
+            <Parameter Name="Cod_Scat" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre_Produc" Mode="In" Type="String" />
+            <Parameter Name="Existencia" Mode="In" Type="Int32" />
+            <Parameter Name="Precio_Vta" Mode="In" Type="String" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+            <Parameter Name="Cod_Product" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Pro_Eliminar">
+          <Parameter Name="Cod_Product" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Prove_Agregar">
+            <Parameter Name="Cod_Pers" Mode="In" Type="Int32" />
+            <Parameter Name="Locacion" Mode="In" Type="String" />
+            <Parameter Name="Enlace" Mode="In" Type="String" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Prove_Editar">
+            <Parameter Name="Cod_Pers" Mode="In" Type="Int32" />
+            <Parameter Name="Locacion" Mode="In" Type="String" />
+            <Parameter Name="Enlace" Mode="In" Type="String" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+            <Parameter Name="Cod_Prove" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Prove_Eliminar">
+          <Parameter Name="Cod_Prove" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SC_Agregar">
+            <Parameter Name="Nom_Sbcat" Mode="In" Type="String" />
+            <Parameter Name="Cod_Cat_Fk" Mode="In" Type="Int32" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SC_Editar">
+            <Parameter Name="Nom_Sbcat" Mode="In" Type="String" />
+            <Parameter Name="Cod_Cat_Fk" Mode="In" Type="Int32" />
+            <Parameter Name="Activo" Mode="In" Type="Boolean" />
+            <Parameter Name="Cod_Scat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SC_Eliminar">
+          <Parameter Name="Cod_Scat" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="categoria" EntityType="SualiadoModel.categoria" />
+          <EntitySet Name="kardex" EntityType="SualiadoModel.kardex" />
+          <EntitySet Name="movimientos" EntityType="SualiadoModel.movimientos" />
+          <EntitySet Name="persona" EntityType="SualiadoModel.persona" />
+          <EntitySet Name="producto" EntityType="SualiadoModel.producto" />
+          <EntitySet Name="proveedor" EntityType="SualiadoModel.proveedor" />
+          <EntitySet Name="subcategoria" EntityType="SualiadoModel.subcategoria" />
+          <EntitySet Name="sysdiagrams" EntityType="SualiadoModel.sysdiagrams" />
+          <AssociationSet Name="FK_subcategoria_categoria" Association="SualiadoModel.FK_subcategoria_categoria">
+            <End Role="categoria" EntitySet="categoria" />
+            <End Role="subcategoria" EntitySet="subcategoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kardex_Movimiento" Association="SualiadoModel.FK_Kardex_Movimiento">
+            <End Role="movimientos" EntitySet="movimientos" />
+            <End Role="kardex" EntitySet="kardex" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Kardex_Persona" Association="SualiadoModel.Fk_Kardex_Persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="kardex" EntitySet="kardex" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Kardex_Producto" Association="SualiadoModel.Fk_Kardex_Producto">
+            <End Role="producto" EntitySet="producto" />
+            <End Role="kardex" EntitySet="kardex" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Proveedor_Persona" Association="SualiadoModel.Fk_Proveedor_Persona">
+            <End Role="persona" EntitySet="persona" />
+            <End Role="proveedor" EntitySet="proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_producto_subcategoria" Association="SualiadoModel.FK_producto_subcategoria">
+            <End Role="subcategoria" EntitySet="subcategoria" />
+            <End Role="producto" EntitySet="producto" />
+          </AssociationSet>
+          <FunctionImport Name="SP_CREAR_COMPRA">
+            <Parameter Name="Cod_Produc" Mode="In" Type="Int32" />
+            <Parameter Name="Existencias" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LISTAR_PRODUCTOS_POR_SUBCATEGORIA" ReturnType="Collection(SualiadoModel.LISTAR_PRODUCTOS_POR_SUBCATEGORIA_Result)">
+          <Parameter Name="Cod_SubCategoria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LISTAR_SUBCATEGORIAS_POR_CATEGORIA" ReturnType="Collection(SualiadoModel.LISTAR_SUBCATEGORIAS_POR_CATEGORIA_Result)">
+          <Parameter Name="Cod_Categoria" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LISTAR_CATEGORIAS" ReturnType="Collection(SualiadoModel.SP_LISTAR_CATEGORIAS_Result)" />
+          <FunctionImport Name="SP_OBTENER_EXISTENCIAS_POR_PRODUCTO" ReturnType="Collection(Int32)">
+          <Parameter Name="codProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LISTAR_PROVEEDORES" ReturnType="Collection(SualiadoModel.SP_LISTAR_PROVEEDORES_Result)" />
+          <FunctionImport Name="EditarContrasena">
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="contrasena" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_VALIDAR_RELACION_PERSONA" ReturnType="Collection(Int32)">
+            <Parameter Name="codPersona" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_VALIDAR_RELACION_PRODUCTO" ReturnType="Collection(Int32)">
+            <Parameter Name="codProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="Cod_Cat" />
+          </Key>
+          <Property Name="Cod_Cat" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Cat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="subcategoria" Relationship="SualiadoModel.FK_subcategoria_categoria" FromRole="categoria" ToRole="subcategoria" />
+        </EntityType>
+        <EntityType Name="kardex">
+          <Key>
+            <PropertyRef Name="Consecut" />
+          </Key>
+          <Property Name="Consecut" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Pers_Fk" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Mov_Fk" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Produc_Fk" Type="Int32" Nullable="false" />
+          <Property Name="Dcto" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Costo" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="movimientos" Relationship="SualiadoModel.FK_Kardex_Movimiento" FromRole="kardex" ToRole="movimientos" />
+          <NavigationProperty Name="persona" Relationship="SualiadoModel.Fk_Kardex_Persona" FromRole="kardex" ToRole="persona" />
+          <NavigationProperty Name="producto" Relationship="SualiadoModel.Fk_Kardex_Producto" FromRole="kardex" ToRole="producto" />
+          <Property Name="Detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="movimientos">
+          <Key>
+            <PropertyRef Name="Cod_Mov" />
+          </Key>
+          <Property Name="Cod_Mov" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Mov" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Aumenta" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="kardex" Relationship="SualiadoModel.FK_Kardex_Movimiento" FromRole="movimientos" ToRole="kardex" />
+        </EntityType>
+        <EntityType Name="persona">
+          <Key>
+            <PropertyRef Name="Cod_Pers" />
+          </Key>
+          <Property Name="Cod_Pers" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Pers" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ape_Pers" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Iden" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Nro_Iden" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Fec_Nac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasena" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Rol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="kardex" Relationship="SualiadoModel.Fk_Kardex_Persona" FromRole="persona" ToRole="kardex" />
+          <NavigationProperty Name="proveedor" Relationship="SualiadoModel.Fk_Proveedor_Persona" FromRole="persona" ToRole="proveedor" />
+        </EntityType>
+        <EntityType Name="producto">
+          <Key>
+            <PropertyRef Name="Cod_Produc" />
+          </Key>
+          <Property Name="Cod_Produc" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Produc" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Existencias" Type="Int32" />
+          <Property Name="Precio_Venta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="Cod_SubCategoria" Type="Int32" />
+          <NavigationProperty Name="kardex" Relationship="SualiadoModel.Fk_Kardex_Producto" FromRole="producto" ToRole="kardex" />
+          <NavigationProperty Name="subcategoria" Relationship="SualiadoModel.FK_producto_subcategoria" FromRole="producto" ToRole="subcategoria" />
+        </EntityType>
+        <EntityType Name="proveedor">
+          <Key>
+            <PropertyRef Name="Cod_Prove" />
+          </Key>
+          <Property Name="Cod_Prove" Type="Int32" Nullable="false" />
+          <Property Name="Cod_Pers_Fk" Type="Int32" Nullable="false" />
+          <Property Name="Locacion" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Enlace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="persona" Relationship="SualiadoModel.Fk_Proveedor_Persona" FromRole="proveedor" ToRole="persona" />
+        </EntityType>
+        <EntityType Name="subcategoria">
+          <Key>
+            <PropertyRef Name="Cod_Scat" />
+          </Key>
+          <Property Name="Cod_Scat" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Sbcat" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="Cod_Categoria" Type="Int32" />
+          <NavigationProperty Name="categoria" Relationship="SualiadoModel.FK_subcategoria_categoria" FromRole="subcategoria" ToRole="categoria" />
+          <NavigationProperty Name="producto" Relationship="SualiadoModel.FK_producto_subcategoria" FromRole="subcategoria" ToRole="producto" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_subcategoria_categoria">
+          <End Type="SualiadoModel.categoria" Role="categoria" Multiplicity="0..1" />
+          <End Type="SualiadoModel.subcategoria" Role="subcategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categoria">
+              <PropertyRef Name="Cod_Cat" />
+            </Principal>
+            <Dependent Role="subcategoria">
+              <PropertyRef Name="Cod_Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kardex_Movimiento">
+          <End Type="SualiadoModel.movimientos" Role="movimientos" Multiplicity="1" />
+          <End Type="SualiadoModel.kardex" Role="kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movimientos">
+              <PropertyRef Name="Cod_Mov" />
+            </Principal>
+            <Dependent Role="kardex">
+              <PropertyRef Name="Cod_Mov_Fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Kardex_Persona">
+          <End Type="SualiadoModel.persona" Role="persona" Multiplicity="1" />
+          <End Type="SualiadoModel.kardex" Role="kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="Cod_Pers" />
+            </Principal>
+            <Dependent Role="kardex">
+              <PropertyRef Name="Cod_Pers_Fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Kardex_Producto">
+          <End Type="SualiadoModel.producto" Role="producto" Multiplicity="1" />
+          <End Type="SualiadoModel.kardex" Role="kardex" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producto">
+              <PropertyRef Name="Cod_Produc" />
+            </Principal>
+            <Dependent Role="kardex">
+              <PropertyRef Name="Cod_Produc_Fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Proveedor_Persona">
+          <End Type="SualiadoModel.persona" Role="persona" Multiplicity="1" />
+          <End Type="SualiadoModel.proveedor" Role="proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="persona">
+              <PropertyRef Name="Cod_Pers" />
+            </Principal>
+            <Dependent Role="proveedor">
+              <PropertyRef Name="Cod_Pers_Fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_producto_subcategoria">
+          <End Type="SualiadoModel.subcategoria" Role="subcategoria" Multiplicity="0..1" />
+          <End Type="SualiadoModel.producto" Role="producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subcategoria">
+              <PropertyRef Name="Cod_Scat" />
+            </Principal>
+            <Dependent Role="producto">
+              <PropertyRef Name="Cod_SubCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="LISTAR_PRODUCTOS_POR_SUBCATEGORIA_Result">
+          <Property Type="Int32" Name="Cod_Produc" Nullable="false" />
+          <Property Type="String" Name="Nombre_Produc" Nullable="false" MaxLength="120" />
+          <Property Type="Int32" Name="Existencias" Nullable="true" />
+          <Property Type="String" Name="Precio_Venta" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Activo" Nullable="true" />
+          <Property Type="Int32" Name="Cod_SubCategoria" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="LISTAR_SUBCATEGORIAS_POR_CATEGORIA_Result">
+          <Property Type="Int32" Name="Cod_Scat" Nullable="false" />
+          <Property Type="String" Name="Nom_Sbcat" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Activo" Nullable="true" />
+          <Property Type="Int32" Name="Cod_Categoria" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_LISTAR_CATEGORIAS_Result">
+          <Property Type="Int32" Name="Cod_Cat" Nullable="false" />
+          <Property Type="String" Name="Nom_Cat" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_LISTAR_PROVEEDORES_Result">
+          <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="101" />
+          <Property Type="Int32" Name="Cod_Pers" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SualiadoModelStoreContainer" CdmEntityContainer="SualiadoEntities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SualiadoModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SualiadoModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SualiadoModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SualiadoModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SualiadoModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SualiadoModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SualiadoModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Kr_Agregar" FunctionName="SualiadoModel.Store.SP_Kr_Agregar" />
+          <FunctionImportMapping FunctionImportName="SP_Kr_Editar" FunctionName="SualiadoModel.Store.SP_Kr_Editar" />
+          <FunctionImportMapping FunctionImportName="SP_Kr_Eliminar" FunctionName="SualiadoModel.Store.SP_Kr_Eliminar" />
+          <FunctionImportMapping FunctionImportName="SP_Per_Agregar" FunctionName="SualiadoModel.Store.SP_Per_Agregar" />
+          <FunctionImportMapping FunctionImportName="SP_Per_Editar" FunctionName="SualiadoModel.Store.SP_Per_Editar" />
+          <FunctionImportMapping FunctionImportName="SP_Per_Eliminar" FunctionName="SualiadoModel.Store.SP_Per_Eliminar" />
+          <FunctionImportMapping FunctionImportName="SP_Pro_Agregar" FunctionName="SualiadoModel.Store.SP_Pro_Agregar" />
+          <FunctionImportMapping FunctionImportName="SP_Pro_Editar" FunctionName="SualiadoModel.Store.SP_Pro_Editar" />
+          <FunctionImportMapping FunctionImportName="SP_Pro_Eliminar" FunctionName="SualiadoModel.Store.SP_Pro_Eliminar" />
+          <FunctionImportMapping FunctionImportName="SP_Prove_Agregar" FunctionName="SualiadoModel.Store.SP_Prove_Agregar" />
+          <FunctionImportMapping FunctionImportName="SP_Prove_Editar" FunctionName="SualiadoModel.Store.SP_Prove_Editar" />
+          <FunctionImportMapping FunctionImportName="SP_Prove_Eliminar" FunctionName="SualiadoModel.Store.SP_Prove_Eliminar" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SualiadoModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="SP_SC_Agregar" FunctionName="SualiadoModel.Store.SP_SC_Agregar" />
+          <FunctionImportMapping FunctionImportName="SP_SC_Editar" FunctionName="SualiadoModel.Store.SP_SC_Editar" />
+          <FunctionImportMapping FunctionImportName="SP_SC_Eliminar" FunctionName="SualiadoModel.Store.SP_SC_Eliminar" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SualiadoModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="SualiadoModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Nom_Cat" ColumnName="Nom_Cat" />
+                <ScalarProperty Name="Cod_Cat" ColumnName="Cod_Cat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kardex">
+            <EntityTypeMapping TypeName="SualiadoModel.kardex">
+              <MappingFragment StoreEntitySet="kardex">
+                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Dcto" ColumnName="Dcto" />
+                <ScalarProperty Name="Cod_Produc_Fk" ColumnName="Cod_Produc_Fk" />
+                <ScalarProperty Name="Cod_Mov_Fk" ColumnName="Cod_Mov_Fk" />
+                <ScalarProperty Name="Cod_Pers_Fk" ColumnName="Cod_Pers_Fk" />
+                <ScalarProperty Name="Consecut" ColumnName="Consecut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movimientos">
+            <EntityTypeMapping TypeName="SualiadoModel.movimientos">
+              <MappingFragment StoreEntitySet="movimientos">
+                <ScalarProperty Name="Aumenta" ColumnName="Aumenta" />
+                <ScalarProperty Name="Nom_Mov" ColumnName="Nom_Mov" />
+                <ScalarProperty Name="Cod_Mov" ColumnName="Cod_Mov" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="persona">
+            <EntityTypeMapping TypeName="SualiadoModel.persona">
+              <MappingFragment StoreEntitySet="persona">
+                <ScalarProperty Name="Tipo_Rol" ColumnName="Tipo_Rol" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Fec_Nac" ColumnName="Fec_Nac" />
+                <ScalarProperty Name="Nro_Iden" ColumnName="Nro_Iden" />
+                <ScalarProperty Name="Tipo_Iden" ColumnName="Tipo_Iden" />
+                <ScalarProperty Name="Ape_Pers" ColumnName="Ape_Pers" />
+                <ScalarProperty Name="Nom_Pers" ColumnName="Nom_Pers" />
+                <ScalarProperty Name="Cod_Pers" ColumnName="Cod_Pers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="producto">
+            <EntityTypeMapping TypeName="SualiadoModel.producto">
+              <MappingFragment StoreEntitySet="producto">
+                <ScalarProperty Name="Cod_SubCategoria" ColumnName="Cod_SubCategoria" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+                <ScalarProperty Name="Nombre_Produc" ColumnName="Nombre_Produc" />
+                <ScalarProperty Name="Cod_Produc" ColumnName="Cod_Produc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedor">
+            <EntityTypeMapping TypeName="SualiadoModel.proveedor">
+              <MappingFragment StoreEntitySet="proveedor">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+                <ScalarProperty Name="Locacion" ColumnName="Locacion" />
+                <ScalarProperty Name="Cod_Pers_Fk" ColumnName="Cod_Pers_Fk" />
+                <ScalarProperty Name="Cod_Prove" ColumnName="Cod_Prove" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subcategoria">
+            <EntityTypeMapping TypeName="SualiadoModel.subcategoria">
+              <MappingFragment StoreEntitySet="subcategoria">
+                <ScalarProperty Name="Cod_Categoria" ColumnName="Cod_Categoria" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Nom_Sbcat" ColumnName="Nom_Sbcat" />
+                <ScalarProperty Name="Cod_Scat" ColumnName="Cod_Scat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SualiadoModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_CREAR_COMPRA" FunctionName="SualiadoModel.Store.SP_CREAR_COMPRA" />
+          <FunctionImportMapping FunctionImportName="LISTAR_PRODUCTOS_POR_SUBCATEGORIA" FunctionName="SualiadoModel.Store.LISTAR_PRODUCTOS_POR_SUBCATEGORIA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SualiadoModel.LISTAR_PRODUCTOS_POR_SUBCATEGORIA_Result">
+                <ScalarProperty Name="Cod_Produc" ColumnName="Cod_Produc" />
+                <ScalarProperty Name="Nombre_Produc" ColumnName="Nombre_Produc" />
+                <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Cod_SubCategoria" ColumnName="Cod_SubCategoria" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LISTAR_SUBCATEGORIAS_POR_CATEGORIA" FunctionName="SualiadoModel.Store.LISTAR_SUBCATEGORIAS_POR_CATEGORIA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SualiadoModel.LISTAR_SUBCATEGORIAS_POR_CATEGORIA_Result">
+                <ScalarProperty Name="Cod_Scat" ColumnName="Cod_Scat" />
+                <ScalarProperty Name="Nom_Sbcat" ColumnName="Nom_Sbcat" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Cod_Categoria" ColumnName="Cod_Categoria" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_LISTAR_CATEGORIAS" FunctionName="SualiadoModel.Store.SP_LISTAR_CATEGORIAS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SualiadoModel.SP_LISTAR_CATEGORIAS_Result">
+                <ScalarProperty Name="Cod_Cat" ColumnName="Cod_Cat" />
+                <ScalarProperty Name="Nom_Cat" ColumnName="Nom_Cat" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_OBTENER_EXISTENCIAS_POR_PRODUCTO" FunctionName="SualiadoModel.Store.SP_OBTENER_EXISTENCIAS_POR_PRODUCTO" />
+          <FunctionImportMapping FunctionImportName="SP_LISTAR_PROVEEDORES" FunctionName="SualiadoModel.Store.SP_LISTAR_PROVEEDORES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SualiadoModel.SP_LISTAR_PROVEEDORES_Result">
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Cod_Pers" ColumnName="Cod_Pers" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EditarContrasena" FunctionName="SualiadoModel.Store.EditarContrasena" />
+          <FunctionImportMapping FunctionImportName="SP_VALIDAR_RELACION_PERSONA" FunctionName="SualiadoModel.Store.SP_VALIDAR_RELACION_PERSONA" />
+          <FunctionImportMapping FunctionImportName="SP_VALIDAR_RELACION_PRODUCTO" FunctionName="SualiadoModel.Store.SP_VALIDAR_RELACION_PRODUCTO" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

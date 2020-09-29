@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SualiadoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="categoria">
+    <Key>
+      <PropertyRef Name="Cod_Cat" />
+    </Key>
+    <Property Name="Cod_Cat" Type="int" Nullable="false" />
+    <Property Name="Nom_Cat" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kardex">
+    <Key>
+      <PropertyRef Name="Consecut" />
+    </Key>
+    <Property Name="Consecut" Type="int" Nullable="false" />
+    <Property Name="Cod_Pers_Fk" Type="int" Nullable="false" />
+    <Property Name="Cod_Mov_Fk" Type="int" Nullable="false" />
+    <Property Name="Cod_Produc_Fk" Type="int" Nullable="false" />
+    <Property Name="Dcto" Type="int" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Costo" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Detalle" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="movimientos">
+    <Key>
+      <PropertyRef Name="Cod_Mov" />
+    </Key>
+    <Property Name="Cod_Mov" Type="int" Nullable="false" />
+    <Property Name="Nom_Mov" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Aumenta" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="Cod_Pers" />
+    </Key>
+    <Property Name="Cod_Pers" Type="int" Nullable="false" />
+    <Property Name="Nom_Pers" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ape_Pers" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tipo_Iden" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Nro_Iden" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Fec_Nac" Type="date" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Contrasena" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Tipo_Rol" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="producto">
+    <Key>
+      <PropertyRef Name="Cod_Produc" />
+    </Key>
+    <Property Name="Cod_Produc" Type="int" Nullable="false" />
+    <Property Name="Nombre_Produc" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="Existencias" Type="int" />
+    <Property Name="Precio_Venta" Type="nvarchar" MaxLength="50" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Cod_SubCategoria" Type="int" />
+  </EntityType>
+  <EntityType Name="proveedor">
+    <Key>
+      <PropertyRef Name="Cod_Prove" />
+    </Key>
+    <Property Name="Cod_Prove" Type="int" Nullable="false" />
+    <Property Name="Cod_Pers_Fk" Type="int" Nullable="false" />
+    <Property Name="Locacion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Enlace" Type="varchar" MaxLength="100" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="subcategoria">
+    <Key>
+      <PropertyRef Name="Cod_Scat" />
+    </Key>
+    <Property Name="Cod_Scat" Type="int" Nullable="false" />
+    <Property Name="Nom_Sbcat" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="bit" />
+    <Property Name="Cod_Categoria" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Kardex_Movimiento">
+    <End Role="movimientos" Type="Self.movimientos" Multiplicity="1" />
+    <End Role="kardex" Type="Self.kardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movimientos">
+        <PropertyRef Name="Cod_Mov" />
+      </Principal>
+      <Dependent Role="kardex">
+        <PropertyRef Name="Cod_Mov_Fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Kardex_Persona">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="kardex" Type="Self.kardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="Cod_Pers" />
+      </Principal>
+      <Dependent Role="kardex">
+        <PropertyRef Name="Cod_Pers_Fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Kardex_Producto">
+    <End Role="producto" Type="Self.producto" Multiplicity="1" />
+    <End Role="kardex" Type="Self.kardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="Cod_Produc" />
+      </Principal>
+      <Dependent Role="kardex">
+        <PropertyRef Name="Cod_Produc_Fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_producto_subcategoria">
+    <End Role="subcategoria" Type="Self.subcategoria" Multiplicity="0..1" />
+    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subcategoria">
+        <PropertyRef Name="Cod_Scat" />
+      </Principal>
+      <Dependent Role="producto">
+        <PropertyRef Name="Cod_SubCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Proveedor_Persona">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="Cod_Pers" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="Cod_Pers_Fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subcategoria_categoria">
+    <End Role="categoria" Type="Self.categoria" Multiplicity="0..1" />
+    <End Role="subcategoria" Type="Self.subcategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoria">
+        <PropertyRef Name="Cod_Cat" />
+      </Principal>
+      <Dependent Role="subcategoria">
+        <PropertyRef Name="Cod_Categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="EditarContrasena" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="correo" Type="nvarchar" Mode="In" />
+    <Parameter Name="contrasena" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="LISTAR_PRODUCTOS_POR_SUBCATEGORIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_SubCategoria" Type="int" Mode="In" />
+  </Function>
+  <Function Name="LISTAR_SUBCATEGORIAS_POR_CATEGORIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Categoria" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_CREAR_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Produc" Type="int" Mode="In" />
+    <Parameter Name="Existencias" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Kr_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Pers_Fk" Type="int" Mode="In" />
+    <Parameter Name="Cod_Mov_Fk" Type="int" Mode="In" />
+    <Parameter Name="Cod_Produc_Fk" Type="int" Mode="In" />
+    <Parameter Name="Dcto" Type="int" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+    <Parameter Name="Costo" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+    <Parameter Name="Detalle" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_Kr_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Pers_Fk" Type="int" Mode="In" />
+    <Parameter Name="Cod_Mov_Fk" Type="int" Mode="In" />
+    <Parameter Name="Cod_Produc_Fk" Type="int" Mode="In" />
+    <Parameter Name="Dcto" Type="int" Mode="In" />
+    <Parameter Name="Cantidad" Type="int" Mode="In" />
+    <Parameter Name="Costo" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+    <Parameter Name="Consecut" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Kr_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Consecut" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_LISTAR_CATEGORIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_LISTAR_PROVEEDORES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_OBTENER_EXISTENCIAS_POR_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codProducto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Per_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nom_Pers" Type="varchar" Mode="In" />
+    <Parameter Name="Ape_Pers" Type="varchar" Mode="In" />
+    <Parameter Name="Tipo_iden" Type="varchar" Mode="In" />
+    <Parameter Name="Nro_Iden" Type="varchar" Mode="In" />
+    <Parameter Name="Fec_Nac" Type="date" Mode="In" />
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+    <Parameter Name="Contrasena" Type="varchar" Mode="In" />
+    <Parameter Name="Tipo_Rol" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Per_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nom_Pers" Type="varchar" Mode="In" />
+    <Parameter Name="Ape_Pers" Type="varchar" Mode="In" />
+    <Parameter Name="Tipo_iden" Type="varchar" Mode="In" />
+    <Parameter Name="Nro_Iden" Type="varchar" Mode="In" />
+    <Parameter Name="Fec_Nac" Type="date" Mode="In" />
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+    <Parameter Name="Cod_Pers" Type="int" Mode="In" />
+    <Parameter Name="Contrasena" Type="varchar" Mode="In" />
+    <Parameter Name="Tipo_Rol" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Per_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Pers" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Pro_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Scat" Type="int" Mode="In" />
+    <Parameter Name="Nombre_Produc" Type="varchar" Mode="In" />
+    <Parameter Name="Existencia" Type="int" Mode="In" />
+    <Parameter Name="Precio_Vta" Type="varchar" Mode="In" />
+    <Parameter Name="Activo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SP_Pro_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Scat" Type="int" Mode="In" />
+    <Parameter Name="Nombre_Produc" Type="varchar" Mode="In" />
+    <Parameter Name="Existencia" Type="int" Mode="In" />
+    <Parameter Name="Precio_Vta" Type="varchar" Mode="In" />
+    <Parameter Name="Activo" Type="bit" Mode="In" />
+    <Parameter Name="Cod_Product" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Pro_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Product" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Prove_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Pers" Type="int" Mode="In" />
+    <Parameter Name="Locacion" Type="varchar" Mode="In" />
+    <Parameter Name="Enlace" Type="varchar" Mode="In" />
+    <Parameter Name="Activo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SP_Prove_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Pers" Type="int" Mode="In" />
+    <Parameter Name="Locacion" Type="varchar" Mode="In" />
+    <Parameter Name="Enlace" Type="varchar" Mode="In" />
+    <Parameter Name="Activo" Type="bit" Mode="In" />
+    <Parameter Name="Cod_Prove" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Prove_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Prove" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_SC_Agregar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nom_Sbcat" Type="varchar" Mode="In" />
+    <Parameter Name="Cod_Cat_Fk" Type="int" Mode="In" />
+    <Parameter Name="Activo" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SP_SC_Editar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nom_Sbcat" Type="varchar" Mode="In" />
+    <Parameter Name="Cod_Cat_Fk" Type="int" Mode="In" />
+    <Parameter Name="Activo" Type="bit" Mode="In" />
+    <Parameter Name="Cod_Scat" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_SC_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cod_Scat" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_VALIDAR_RELACION_PERSONA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codPersona" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_VALIDAR_RELACION_PRODUCTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codProducto" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="SualiadoModelStoreContainer">
+    <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kardex" EntityType="Self.kardex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="movimientos" EntityType="Self.movimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="producto" EntityType="Self.producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subcategoria" EntityType="Self.subcategoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Kardex_Movimiento" Association="Self.FK_Kardex_Movimiento">
+      <End Role="movimientos" EntitySet="movimientos" />
+      <End Role="kardex" EntitySet="kardex" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Kardex_Persona" Association="Self.Fk_Kardex_Persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="kardex" EntitySet="kardex" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Kardex_Producto" Association="Self.Fk_Kardex_Producto">
+      <End Role="producto" EntitySet="producto" />
+      <End Role="kardex" EntitySet="kardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK_producto_subcategoria" Association="Self.FK_producto_subcategoria">
+      <End Role="subcategoria" EntitySet="subcategoria" />
+      <End Role="producto" EntitySet="producto" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Proveedor_Persona" Association="Self.Fk_Proveedor_Persona">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subcategoria_categoria" Association="Self.FK_subcategoria_categoria">
+      <End Role="categoria" EntitySet="categoria" />
+      <End Role="subcategoria" EntitySet="subcategoria" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

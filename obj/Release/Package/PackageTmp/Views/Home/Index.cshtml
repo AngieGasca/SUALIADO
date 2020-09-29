@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+                    
+    <li class="nav-item active" margin-top:15px; margin-left:500px;">
+        BIENVENIDO AL SISTEMA QUE DESEA REVISAR EL DÍA DE HOY
+        <hr />
+        <center>
+
+
+            @if (Session["usuario"] != null)
+            {
+                var usuarioPer = new Sualiado.Models.persona();
+
+                usuarioPer = (Sualiado.Models.persona)Session["usuario"];
+
+
+                if (usuarioPer.Tipo_Rol == 1)
+                {
+
+                    <input type="image" src="~/Imagenes/señor.PNG" onclick="@("window.location.href='" + @Url.Action("Index", "Person") + "'");" />
+
+                }
+                else
+                {
+                    <input type="image" src="~/Imagenes/inven.jpg" onclick="@("window.location.href='" + @Url.Action("Index", "Kardex") + "'");" />
+                }
+
+
+            }
+        </center>
+     </li>

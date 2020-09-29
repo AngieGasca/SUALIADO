@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Sualiado.Models.persona>
+@{
+    ViewBag.Title = "Persona";
+}
+
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Usuarios</h3>
+            <span class="pull-right clickable">
+                <i class="glyphicon glyphicon-chevron-up"></i>
+
+
+            </span>
+        </div>
+        <!-- contenido abajo-->
+        <div class="float-left px-Per" style="margin-left:10px;">
+            <br />
+            <label style="color:red;">   @ViewBag.Mensaje </label>
+        </div>
+        <div class="float-right px-Per">
+            <br />
+            @Html.ActionLink("_", "Add", null, new { @class = "btn-outline-agregarPer" })
+        </div>
+        <form>
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Identificación</th>
+                        <th scope="col">Número</th>
+                        <th scope="col">Nacimiento</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Teléfono</th>
+                        @* <th scope="col">Contraseña</th>*@
+                        <th scope="col">Rol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.Cod_Pers</th>
+                            <td>@item.Nom_Pers</td>
+                            <td>@item.Ape_Pers</td>
+                            <td>@item.Tipo_Iden</td>
+                            <td>@item.Nro_Iden</td>
+                            <td>@item.Fec_Nac</td>
+                            <td>@item.Correo</td>
+                            <td>@item.Telefono</td>
+                            @*@<td>@item.Contrasena</td>*@
+                            <td>@item.Tipo_Rol</td>
+                            <td>@Html.ActionLink("_", "Edit", new { cod = item.Cod_Pers }, new { @class = "btn-outline-editarPer" })</td>
+                            <td>@Html.ActionLink("_", "Delete", new { cod = item.Cod_Pers }, new { @class = "btn-outline-eliminarPer" })</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+
+    </div>

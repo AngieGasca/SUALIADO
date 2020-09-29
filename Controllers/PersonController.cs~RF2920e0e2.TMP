@@ -1,0 +1,40 @@
+﻿using Sualiado.Models;
+using Sualiado.Models.Request;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Sualiado.Controllers
+{
+    public class PersonController : Controller
+    {
+        private SualiadoEntities db = new SualiadoEntities();
+        // GET: Person
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View(db.persona.ToList());
+        }
+        [HttpPost]
+        public ActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Add(PersonRequest model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (db)
+                {
+                    db.SP_Per_Agregar(model.Nom_Pers, model.Ape_Pers, model.Tipo_Iden, model.Nro_Iden, model.Fec_Nac, model.Correo, model.Telefono);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(model);
+        }
+    }
+}

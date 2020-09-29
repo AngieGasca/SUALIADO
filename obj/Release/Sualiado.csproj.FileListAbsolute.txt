@@ -1,0 +1,172 @@
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\Sualiado.dll.config
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\Sualiado.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\Sualiado.pdb
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\csc.exe
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\csc.exe.config
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\csc.rsp
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\csi.exe
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\csi.exe.config
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\csi.rsp
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.AppContext.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Console.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.IO.Compression.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Net.Http.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.ValueTuple.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\vbc.exe
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\vbc.exe.config
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\vbc.rsp
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\VBCSCompiler.exe
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\EntityFramework.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\EntityFramework.SqlServer.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Helpers.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Mvc.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Razor.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Webpages.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Webpages.Razor.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\EntityFramework.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\EntityFramework.SqlServer.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Razor.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Webpages.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Webpages.Razor.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Helpers.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\System.Web.Mvc.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\es\System.Web.Razor.resources.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\es\System.Web.Webpages.resources.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\obj\Release\Sualiado.csprojAssemblyReference.cache
+C:\Users\Tama\source\repos\Sualiado\Sualiado\obj\Release\Sualiado.csproj.CoreCompileInputs.cache
+C:\Users\Tama\source\repos\Sualiado\Sualiado\obj\Release\Sualiado.csproj.CopyComplete
+C:\Users\Tama\source\repos\Sualiado\Sualiado\obj\Release\Sualiado.dll
+C:\Users\Tama\source\repos\Sualiado\Sualiado\obj\Release\Sualiado.pdb
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Sualiado.dll.config
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Sualiado.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Sualiado.pdb
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\csc.exe
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\csc.exe.config
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\csc.rsp
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\csi.exe
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\csi.exe.config
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\csi.rsp
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.AppContext.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Console.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.IO.Compression.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Net.Http.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.ValueTuple.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\vbc.exe
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\vbc.exe.config
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\vbc.rsp
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\VBCSCompiler.exe
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Antlr3.Runtime.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\EntityFramework.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\EntityFramework.SqlServer.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Newtonsoft.Json.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Helpers.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Mvc.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Optimization.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Razor.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Webpages.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Webpages.Razor.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\WebGrease.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Antlr3.Runtime.pdb
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\EntityFramework.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\EntityFramework.SqlServer.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Newtonsoft.Json.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Optimization.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Razor.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Webpages.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Webpages.Razor.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Helpers.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\System.Web.Mvc.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\es\System.Web.Razor.resources.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\es\System.Web.Webpages.resources.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\es\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\es\System.Web.Webpages.Razor.resources.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\obj\Release\Sualiado.csprojAssemblyReference.cache
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\obj\Release\Sualiado.csproj.CoreCompileInputs.cache
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\obj\Release\Sualiado.csproj.CopyComplete
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\obj\Release\Sualiado.dll
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\obj\Release\Sualiado.pdb
+C:\Users\Tama\Documents\Proyecto Sualiado\Sualiado\Sualiado\obj\Release\Sualiado.sourcelink.json

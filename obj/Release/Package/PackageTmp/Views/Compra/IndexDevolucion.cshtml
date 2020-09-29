@@ -1,0 +1,228 @@
+﻿
+
+@model Sualiado.Models.CompraModel
+
+
+@{
+
+
+
+    ViewBag.Title = "DEVOLUCION";
+
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+
+
+
+@Scripts.Render("~/bundles/ComprarJS")
+
+<div class="float-md-none">
+
+
+
+    <div class="panel panel-success" style="border-color: transparent;background-color:azure;">
+
+        <div class="panel-heading">
+            <h3 class="panel-title" style="margin-left:40px;">Devoluciones</h3>
+
+        </div>
+
+
+        <div style="background-color:azure;margin-left:90px;border-color: transparent;">
+
+
+            <!-- contenido abajo-->
+
+            @using (Html.BeginForm("Index", "Compra", FormMethod.Post, new { @id = "formIdDocumentos" }))
+
+            {
+
+
+                <br />
+
+
+                <div class="row">
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+                            <label>Categoría</label>
+
+                            @Html.DropDownListFor(model => model.categoria, Model.listaCategorias, "-- Seleccionar --", htmlAttributes: new { @class = "form-control", @onchange = "CargarSubCategoria()" })
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-1">
+                        <br />
+                        <br />
+                        <label class="text-danger">*</label>
+                    </div>
+
+
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+                            <label>Subcategoría</label>
+                            @Html.DropDownListFor(model => model.subcategoria, Model.listaSubCategorias, "-- Seleccionar --", htmlAttributes: new { @class = "form-control", @onchange = "CargarProductos()" })
+
+
+                            @Html.ValidationMessageFor(model => model.listaSubCategorias, "", new { @class = "text-danger" })
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-1">
+                        <br />
+                        <br />
+
+                        <label class="text-danger">*</label>
+                    </div>
+
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+                            <label>Producto</label>
+                            @Html.DropDownListFor(model => model.producto, Model.listaProducto, "-- Seleccionar --", htmlAttributes: new { @class = "form-control" })
+
+
+                            @Html.ValidationMessageFor(model => model.listaProducto, "", new { @class = "text-danger" })
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-1">
+                        <br />
+                        <br />
+
+                        <label class="text-danger">*</label>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+                            <label>Cantidad a devolver</label>
+
+
+
+                            <input type="number" id="txtExistencias" name="txtExistencias" min="0" max="999" class="quantity form-control" />
+
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-1">
+                        <br />
+                        <br />
+
+                        <label class="text-danger">*</label>
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+                            <label>Valor Total</label>
+
+
+                            <input type="number" id="txtValorTotal" name="txtValorTotal" min="0" max="99999" class="quantity form-control" />
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-1">
+                        <br />
+                        <br />
+
+                        <label class="text-danger">*</label>
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <div class="form-group">
+
+                            <label>Proveedor</label>
+                            @Html.DropDownListFor(model => model.Proveedor, Model.listaProveedores, "-- Seleccionar --", htmlAttributes: new { @class = "form-control" })
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-1">
+                        <br />
+                        <br />
+
+                        <label class="text-danger">*</label>
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-8">
+
+                        <div class="form-group">
+
+                            <label>Detalle</label>
+
+
+
+                            <textarea id="txtDetalle" name="txtDetalle" class="form-control" rows="3"></textarea>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-1">
+                        <br />
+                        <br />
+
+                        <label class="text-danger">*</label>
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <div class="form-group">
+
+                            <br />
+                            <button type="button" class="btn btn-success my-2 my-sm-0" onclick="GuardarDevolucion()">Devolución</button>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            }
+
+
+            <!-- contenido arriba-->
+        </div>
+
+    </div>
+</div>

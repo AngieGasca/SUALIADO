@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SualiadoModelStoreContainer" CdmEntityContainer="SualiadoEntities">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SualiadoModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SualiadoModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SualiadoModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SualiadoModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SualiadoModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SualiadoModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SualiadoModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Kr_Agregar" FunctionName="SualiadoModel.Store.SP_Kr_Agregar" />
+    <FunctionImportMapping FunctionImportName="SP_Kr_Editar" FunctionName="SualiadoModel.Store.SP_Kr_Editar" />
+    <FunctionImportMapping FunctionImportName="SP_Kr_Eliminar" FunctionName="SualiadoModel.Store.SP_Kr_Eliminar" />
+    <FunctionImportMapping FunctionImportName="SP_Per_Agregar" FunctionName="SualiadoModel.Store.SP_Per_Agregar" />
+    <FunctionImportMapping FunctionImportName="SP_Per_Editar" FunctionName="SualiadoModel.Store.SP_Per_Editar" />
+    <FunctionImportMapping FunctionImportName="SP_Per_Eliminar" FunctionName="SualiadoModel.Store.SP_Per_Eliminar" />
+    <FunctionImportMapping FunctionImportName="SP_Pro_Agregar" FunctionName="SualiadoModel.Store.SP_Pro_Agregar" />
+    <FunctionImportMapping FunctionImportName="SP_Pro_Editar" FunctionName="SualiadoModel.Store.SP_Pro_Editar" />
+    <FunctionImportMapping FunctionImportName="SP_Pro_Eliminar" FunctionName="SualiadoModel.Store.SP_Pro_Eliminar" />
+    <FunctionImportMapping FunctionImportName="SP_Prove_Agregar" FunctionName="SualiadoModel.Store.SP_Prove_Agregar" />
+    <FunctionImportMapping FunctionImportName="SP_Prove_Editar" FunctionName="SualiadoModel.Store.SP_Prove_Editar" />
+    <FunctionImportMapping FunctionImportName="SP_Prove_Eliminar" FunctionName="SualiadoModel.Store.SP_Prove_Eliminar" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SualiadoModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="SP_SC_Agregar" FunctionName="SualiadoModel.Store.SP_SC_Agregar" />
+    <FunctionImportMapping FunctionImportName="SP_SC_Editar" FunctionName="SualiadoModel.Store.SP_SC_Editar" />
+    <FunctionImportMapping FunctionImportName="SP_SC_Eliminar" FunctionName="SualiadoModel.Store.SP_SC_Eliminar" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SualiadoModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="categoria">
+      <EntityTypeMapping TypeName="SualiadoModel.categoria">
+        <MappingFragment StoreEntitySet="categoria">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Nom_Cat" ColumnName="Nom_Cat" />
+          <ScalarProperty Name="Cod_Cat" ColumnName="Cod_Cat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kardex">
+      <EntityTypeMapping TypeName="SualiadoModel.kardex">
+        <MappingFragment StoreEntitySet="kardex">
+          <ScalarProperty Name="Detalle" ColumnName="Detalle" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Dcto" ColumnName="Dcto" />
+          <ScalarProperty Name="Cod_Produc_Fk" ColumnName="Cod_Produc_Fk" />
+          <ScalarProperty Name="Cod_Mov_Fk" ColumnName="Cod_Mov_Fk" />
+          <ScalarProperty Name="Cod_Pers_Fk" ColumnName="Cod_Pers_Fk" />
+          <ScalarProperty Name="Consecut" ColumnName="Consecut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="movimientos">
+      <EntityTypeMapping TypeName="SualiadoModel.movimientos">
+        <MappingFragment StoreEntitySet="movimientos">
+          <ScalarProperty Name="Aumenta" ColumnName="Aumenta" />
+          <ScalarProperty Name="Nom_Mov" ColumnName="Nom_Mov" />
+          <ScalarProperty Name="Cod_Mov" ColumnName="Cod_Mov" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persona">
+      <EntityTypeMapping TypeName="SualiadoModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="Tipo_Rol" ColumnName="Tipo_Rol" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Fec_Nac" ColumnName="Fec_Nac" />
+          <ScalarProperty Name="Nro_Iden" ColumnName="Nro_Iden" />
+          <ScalarProperty Name="Tipo_Iden" ColumnName="Tipo_Iden" />
+          <ScalarProperty Name="Ape_Pers" ColumnName="Ape_Pers" />
+          <ScalarProperty Name="Nom_Pers" ColumnName="Nom_Pers" />
+          <ScalarProperty Name="Cod_Pers" ColumnName="Cod_Pers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto">
+      <EntityTypeMapping TypeName="SualiadoModel.producto">
+        <MappingFragment StoreEntitySet="producto">
+          <ScalarProperty Name="Cod_SubCategoria" ColumnName="Cod_SubCategoria" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+          <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+          <ScalarProperty Name="Nombre_Produc" ColumnName="Nombre_Produc" />
+          <ScalarProperty Name="Cod_Produc" ColumnName="Cod_Produc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedor">
+      <EntityTypeMapping TypeName="SualiadoModel.proveedor">
+        <MappingFragment StoreEntitySet="proveedor">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+          <ScalarProperty Name="Locacion" ColumnName="Locacion" />
+          <ScalarProperty Name="Cod_Pers_Fk" ColumnName="Cod_Pers_Fk" />
+          <ScalarProperty Name="Cod_Prove" ColumnName="Cod_Prove" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subcategoria">
+      <EntityTypeMapping TypeName="SualiadoModel.subcategoria">
+        <MappingFragment StoreEntitySet="subcategoria">
+          <ScalarProperty Name="Cod_Categoria" ColumnName="Cod_Categoria" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Nom_Sbcat" ColumnName="Nom_Sbcat" />
+          <ScalarProperty Name="Cod_Scat" ColumnName="Cod_Scat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SualiadoModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_CREAR_COMPRA" FunctionName="SualiadoModel.Store.SP_CREAR_COMPRA" />
+    <FunctionImportMapping FunctionImportName="LISTAR_PRODUCTOS_POR_SUBCATEGORIA" FunctionName="SualiadoModel.Store.LISTAR_PRODUCTOS_POR_SUBCATEGORIA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SualiadoModel.LISTAR_PRODUCTOS_POR_SUBCATEGORIA_Result">
+          <ScalarProperty Name="Cod_Produc" ColumnName="Cod_Produc" />
+          <ScalarProperty Name="Nombre_Produc" ColumnName="Nombre_Produc" />
+          <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+          <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Cod_SubCategoria" ColumnName="Cod_SubCategoria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LISTAR_SUBCATEGORIAS_POR_CATEGORIA" FunctionName="SualiadoModel.Store.LISTAR_SUBCATEGORIAS_POR_CATEGORIA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SualiadoModel.LISTAR_SUBCATEGORIAS_POR_CATEGORIA_Result">
+          <ScalarProperty Name="Cod_Scat" ColumnName="Cod_Scat" />
+          <ScalarProperty Name="Nom_Sbcat" ColumnName="Nom_Sbcat" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Cod_Categoria" ColumnName="Cod_Categoria" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_LISTAR_CATEGORIAS" FunctionName="SualiadoModel.Store.SP_LISTAR_CATEGORIAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SualiadoModel.SP_LISTAR_CATEGORIAS_Result">
+          <ScalarProperty Name="Cod_Cat" ColumnName="Cod_Cat" />
+          <ScalarProperty Name="Nom_Cat" ColumnName="Nom_Cat" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_OBTENER_EXISTENCIAS_POR_PRODUCTO" FunctionName="SualiadoModel.Store.SP_OBTENER_EXISTENCIAS_POR_PRODUCTO" />
+    <FunctionImportMapping FunctionImportName="SP_LISTAR_PROVEEDORES" FunctionName="SualiadoModel.Store.SP_LISTAR_PROVEEDORES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SualiadoModel.SP_LISTAR_PROVEEDORES_Result">
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Cod_Pers" ColumnName="Cod_Pers" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EditarContrasena" FunctionName="SualiadoModel.Store.EditarContrasena" />
+    <FunctionImportMapping FunctionImportName="SP_VALIDAR_RELACION_PERSONA" FunctionName="SualiadoModel.Store.SP_VALIDAR_RELACION_PERSONA" />
+    <FunctionImportMapping FunctionImportName="SP_VALIDAR_RELACION_PRODUCTO" FunctionName="SualiadoModel.Store.SP_VALIDAR_RELACION_PRODUCTO" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sualiado</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <img src="~/Imagenes/LOG.png" height="55" width="200">
+
+            <ul class="navbar-nav mr-auto">
+
+                @if (Session["usuario"] != null)
+                {
+                    var usuarioPer = new Sualiado.Models.persona();
+
+                    usuarioPer = (Sualiado.Models.persona)Session["usuario"];
+
+
+                    if (usuarioPer.Tipo_Rol == 2)
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Producto", "Index", "Product", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Kardex", "Index", "Kardex", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+
+                            @Html.ActionLink("Personas", "Index", "Person", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+
+                        <li class="nav-item">
+
+                            @Html.ActionLink("Proveedor", "Index", "Provider", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Producto", "Index", "Product", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Kardex", "Index", "Kardex", new { area = "" }, new { @class = "nav-link" })
+                        </li>
+                    }
+                    <li class="nav-item active">
+                        <a class="nav-link" href="~/">Salir<span class="sr-only">(current)</span></a>
+                    </li>
+
+
+                    <li class="nav-item active" style="float: right; margin-top:15px; margin-left:500px;">
+
+                        @Html.Label(usuarioPer.Nom_Pers.ToString() + " " + usuarioPer.Ape_Pers.ToString())
+                    </li>
+
+                }
+
+            </ul>
+
+        </div>
+    </nav>
+    <br />
+    @RenderBody()
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

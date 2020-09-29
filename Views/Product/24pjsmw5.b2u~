@@ -1,0 +1,43 @@
+﻿@model Sualiado.Models.Request.ProductRequest
+
+@{
+    ViewBag.Title = "Editar Persona";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(p => p.Cod_Produc)
+
+    <div>
+        @Html.LabelFor(p => p.Cod_Subca)
+        @Html.TextBoxFor(p => p.Cod_Subca, new { @class = "form-control" }))
+    </div>
+    <div>
+        @Html.LabelFor(p => p.Nombre_Produc)
+        @Html.TextBoxFor(p => p.Nombre_Produc, new { @class = "form-control" }))
+    </div>
+    <div>
+        @Html.LabelFor(p => p.Existencia)
+        @Html.TextBoxFor(p => p.Existencia, new { @class = "form-control" }))
+    </div>
+    <div>
+        @Html.LabelFor(p => p.Precio_Vta)
+        @Html.TextBoxFor(p => p.Precio_Vta, new { @class = "form-control" }))
+    </div>
+    <div>
+        @Html.LabelFor(p => p.Tope_Min)
+        @Html.TextBoxFor(p => p.Tope_Min, new { @class = "form-control" }))
+    </div>
+    <div>
+        @Html.LabelFor(p => p.Tope_Max)
+        @Html.TextBoxFor(p => p.Tope_Max, new { @class = "form-control" }))
+    </div>
+    <div>
+        @Html.LabelFor(p => p.Activo)
+        @Html.TextBoxFor(p => p.Activo, new { @class = "form-control" }))
+    </div>
+
+    <input type="submit" value="Agregar" />
+
+}
+
