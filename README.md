@@ -1,0 +1,3 @@
+# SUALIADO
+Proyecto completo
+Este  es mi  proyecto web llamado Sualiado el cual realiza  la función  de un Kardex...
